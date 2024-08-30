@@ -1,0 +1,11 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr) );
+    gap: 1rem;
+}
+
+th {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

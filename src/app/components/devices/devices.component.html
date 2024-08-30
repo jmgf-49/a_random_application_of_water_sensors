@@ -1,0 +1,65 @@
+<div>
+    <div style="display: block; background-color: var(--primary-color); padding: 1em;">
+        <h1 style="color: white; margin: 0;">Lista de Dispositivos</h1>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; background-color: white;">
+        <mat-form-field appearance="fill" style="flex-grow: 1; max-width: 70%; margin: 0.5em;" >
+          
+          <mat-label style="display: flex"><mat-icon style="margin-right: 0.5em;">search</mat-icon> Filtrar...</mat-label>
+          <input matInput #input (keyup)="applyFilter($event)">
+        </mat-form-field>
+      <app-create-icon style="scale: 75%;"></app-create-icon>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Referencia </th>
+          <td mat-cell *matCellDef="let devices"> {{devices.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+            <td mat-cell *matCellDef="let devices"> {{devices.name}} </td>
+          </ng-container>
+  
+        <ng-container matColumnDef="serialnumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Serie </th>
+          <td mat-cell *matCellDef="let devices"> {{devices.serialnumber}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="SIM">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº SIM </th>
+          <td mat-cell *matCellDef="let devices"> {{devices.SIM}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="createdat">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Alta </th>
+          <td mat-cell *matCellDef="let devices"> {{devices.createdat}} </td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="Operations">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;" mat-sort-header> Operaciones </th>
+          <td mat-cell *matCellDef="let device" style="text-align: center;"> 
+            <button mat-icon-button>
+              <mat-icon fab-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="7">No Hay Resultados</td>
+        </tr>
+      </table>
+  
+  
+        <mat-paginator [length]="data.length"
+        [pageSize]="10"
+        [pageSizeOptions]="[10,15,25,50]"
+        aria-label="Seleccionar Página">
+      </mat-paginator>
+  
+  </div>
+  
+      

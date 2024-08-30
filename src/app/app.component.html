@@ -1,0 +1,53 @@
+<mat-toolbar color='primary' >
+    <button mat-icon-button disableRipple="true" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span>{{title}}</span>
+    <span class="spacer"></span>
+
+    <div #searchbox style="display: none; font-size: 12px; margin: auto; scale: 0.80; margin-right:-1em; max-width: 400px; flex-grow: 1;">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Buscar...</mat-label>
+        <input matInput >
+      </mat-form-field>
+    </div>
+
+    <button mat-icon-button (click)="toggleSearchBox(searchbox)"><mat-icon>search</mat-icon></button>
+    <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+  </mat-toolbar>
+
+<mat-sidenav-container>
+  
+    <mat-sidenav #sidenav mode='side' opened style="padding: 0;">
+      <div id="flex-container">
+      <mat-card id="usercard">
+        <mat-card-header>
+          <img mat-card-avatar src="https://bulma.io/assets/images/placeholders/256x256.png"/>
+          <mat-card-title>user</mat-card-title>
+          <mat-card-subtitle>example role</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <button class="sidebutton" mat-button routerLink="/home"><mat-icon>home</mat-icon>Inicio</button>
+        <button class="sidebutton" mat-button routerLink="/devices"><mat-icon>devices</mat-icon>Dispositivos</button>
+        <button class="sidebutton" mat-button routerLink="/clients"><mat-icon>people</mat-icon>Clientes</button>
+        <button class="sidebutton" mat-button routerLink="/users"><mat-icon>person</mat-icon>Usuarios</button>
+        <button class="sidebutton" mat-button routerLink="/posts"><mat-icon>post_add</mat-icon>Publicaciones</button>
+        <button class="sidebutton" mat-button routerLink="/stadistics"><mat-icon>bar_chart</mat-icon>Estadísticas</button>
+        <button class="sidebutton" mat-button routerLink="/tools"><mat-icon>build</mat-icon>Herramientas</button>
+        <button class="sidebutton" mat-button routerLink="/settings"><mat-icon>settings</mat-icon>Configuración</button>  
+      </div>
+
+      <footer>
+        <p>© 2024 - 2024 ARAOWS.</p>
+        <p><b>V_</b>1.0.0 - Angular</p>
+      </footer>
+    </div>
+    </mat-sidenav>
+  
+    <mat-sidenav-content id="content">
+      <div style="margin: 1em;">
+      <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  
+</mat-sidenav-container>

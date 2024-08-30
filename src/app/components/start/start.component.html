@@ -1,0 +1,49 @@
+<div #summary class="grid-4">
+  
+</div>
+<div #graphs class="grid">
+    @defer () {
+      <mat-card *ngFor="let device of devices">
+        <mat-card-header style="flex-direction: column!important;">
+          <mat-card-title>
+            <div style="display: flex; align-items: center; flex-direction: row; justify-content: space-between;">
+              {{ device.name }}
+              <div style="    display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;">
+              <mat-icon color="primary" *ngIf="device.status === true">check_circle</mat-icon>
+              <mat-icon color="warn" *ngIf="device.status === false">error</mat-icon>
+              <button mat-icon-button aria-label="Más ajustes">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+            </div>
+          </mat-card-title>
+          <mat-card-subtitle>device {{ device.id }}</mat-card-subtitle>
+        </mat-card-header>
+         <mat-card-content>
+          <p>
+            {{device.graphdata}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    
+    } @placeholder{
+      <mat-card class="skeleton">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    } @loading (minimum 1s) {
+      <mat-card *ngFor="let card of displayedCards" class="skeleton">
+        <mat-card-header>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    }
+    </div>
+    
+    
